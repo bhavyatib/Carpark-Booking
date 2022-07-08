@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Parking Spaces Admin</title>
+    <link rel="stylesheet" th:href="@{/style_admin.css}" href="../../../static/style_admin.css">
+    <!--<link rel="stylesheet" href="../../../static/style_admin.css">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo-details">
+        <i class='bx bxl-c-plus-plus'></i>
+        <span class="logo_name">Parking App</span>
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a th:href="@{/Dashboard/a/}" >
+                <i class='bx bx-grid-alt' ></i>
+                <span class="links_name">Home</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/a/Bookings}" >
+                <i class='bx bx-box' ></i>
+                <span class="links_name">Bookings</span>
+            </a>
+        </li>
+        <li>
+            <a href="@{/Dashboard/ParkingSpace}" class="active">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name">Parking Spaces</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/a/Amenities}" >
+                <i class='bx bx-pie-chart-alt-2' ></i>
+                <span class="links_name">Amenities</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/a/Report}" >
+                <i class='bx bx-coin-stack' ></i>
+                <span class="links_name">Report</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/a/AllUsers}" >
+                <i class='bx bx-book-alt' ></i>
+                <span class="links_name">All Users</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/a/Settings}" >
+                <i class='bx bx-cog' ></i>
+                <span class="links_name">Setting</span>
+            </a>
+        </li>
+        <li class="log_out">
+            <a th:href="@{/}">
+                <i class='bx bx-log-out'></i>
+                <span class="links_name">Log out</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Admin Dashboard</span>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <i class='bx bx-search' ></i>
+        </div>
+        <div class="profile-details">
+            <!--<img src="images/profile.jpg" alt="">-->
+            <span class="admin_name">Admin name</span>
+            <i class='bx bx-chevron-down' ></i>
+        </div>
+    </nav>
+
+    <div class="home-content">
+        <div class="overview-boxes">
+
+        </div>
+
+        <div class="sales-boxes">
+            <div class="recent-sales box">
+                <div class="title">Parking Slots</div>
+                <br>
+                    <div class="">No. of Hatchback Slots:<span> 5 </span></div>
+                    <div class="">No. of Sedan Slots:<span> 4 </span></div>
+                    <div class="">No. of SUV Slots:<span> 4 </span></div>
+                    <div class="">No. of Buffer Slots:<span> 5 </span></div>
+                <br>
+                <br>
+
+                <div class="buttons">
+
+                    <div class="button">
+                        <a href="#">Back</a>
+                    </div>
+                </div>
+
+                <script>
+                    let sidebar = document.querySelector(".sidebar");
+                    let sidebarBtn = document.querySelector(".sidebarBtn");
+                    sidebarBtn.onclick = function() {
+                        sidebar.classList.toggle("active");
+                        if(sidebar.classList.contains("active")){
+                            sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+                        }else
+                            sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+                    }
+                    // Get the modal
+                    var modal = document.getElementById("myModal");
+
+                    // Get the button that opens the modal
+                    var btn = document.getElementById("myBtn");
+
+                    // Get the <span> element that closes the modal
+                    var span = document.getElementsByClassName("close")[0];
+
+                    // When the user clicks on the button, open the modal
+                    btn.onclick = function() {
+                        modal.style.display = "block";
+                    }
+
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function() {
+                        modal.style.display = "none";
+                    }
+
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                </script>
+
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+
+</html>

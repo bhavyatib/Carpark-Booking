@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+                      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <style>
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            font-size: 20px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 15px 20px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        .dropdown:hover .dropdown-content {display: block;}
+
+        .dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" th:href="@{/style_signUp.css}">
+    <link rel="stylesheet" href="../../../static/style_signUp.css">
+</head>
+
+<body>
+<div class="registrationbox">
+    <h1>Sign up!</h1>
+    <!-- <img src="https://previews.123rf.com/images/asmati/asmati1610/asmati161000233/63831576-user-sign-illustration-white-icon-on-red-circle-.jpg" class="avatar" >-->
+    <div class="reg">
+        <form name='registration' th:action="@{/register}" th:object="${carOwner}" method='POST'>
+        <tr>
+            <td>First Name: <br></td>
+            <td><input th:field="*{firstName}" type='text' name='firstName' required></input></td>
+        </tr>
+        <br>
+        <tr>
+            <td>Last Name:</td><br>
+            <td><input th:field="*{lastName}" type='text' name='lastName' required></input></td>
+        </tr>
+        <tr>
+        <br>
+        <tr>
+            <td>Username:</td><br>
+            <td><input th:field="*{username}" type='text' name='username' required></input></td>
+        </tr>
+        <br>
+        <tr>
+            <td>Password:</td><br>
+            <td><input th:field="*{password}" type='password' id='password' name='password' onkeyup="return passwordStrength();" required/></input></td>
+        </tr>
+            <br>
+        <span id="strength"></span>
+        <br>
+        <tr>
+            <td>Confirm Password:</td><br>
+            <td><input type='password' id='confirmPassword' name='confirmPassword' onkeyup="return pwd_matcher();" required/></input></td>
+        </tr>
+            <br>
+        <span id="match"></span>
+        <br>
+        <tr>
+            <td>Address:</td><br>
+            <td><input th:field="*{address}" type='text' name='address' required></input></td>
+        </tr>
+        <br>
+        <tr>
+            <td>Email ID:</td><br>
+            <td><input th:field="*{emailId}" type='text' name='emailId'  required></input></td>
+        </tr>
+        <br>
+        <tr>
+            <td>Mobile No.:</td><br>
+            <td><input th:field="*{phoneNumber}" type='text' name='phoneNumber'  required></input></td>
+        </tr>
+        <br>
+        <tr>
+            <td>Car Registration No.:</td><br>
+            <td><input th:field="*{carRegistrationNumber}" type='text' name='carRegistrationNumber'  required></input></td>
+            <td th:text="${message}"></td>
+        </tr>
+        <br>
+        <label for="carType">Car Type:</label><br>
+         <select name="carType" th:field="*{carType}" type="text"  id="carType">
+                 <option value="Hatchback">Hatch Back</option>
+                 <option value="Sedan">Sedan</option>
+                 <option value="SUV">SUV</option>
+
+             </select>
+        </tr>
+        <tr>
+            <td>
+                <input name="submit" type="submit" value="Submit" />
+            </td>
+        </tr>
+    </form>
+    </div>
+
+    <script>
+        function pwd_matcher() {
+            const button=document.getElementById('submit');
+            var match = document.getElementById('match');
+            var pwd1 = document.getElementById("password").value;
+            var pwd2 = document.getElementById("confirmPassword").value;
+            if (pwd1 != pwd2) {
+                match.innerHTML = 'Passwords do not match';
+                button.disabled=true;
+            }
+            else {
+                button.disabled = passwordStrength();
+             //   match.innerHTML = 'Passwords match! You may proceed';
+                match.innerHTML = passwordStrength().toString();
+            }
+
+        }
+    </script>
+    <script language="javascript">
+        function passwordStrength() {
+            const button=document.getElementById('submit');
+            var strength = document.getElementById('strength');
+            var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+            var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+            var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+            var pwd = document.getElementById("password");
+            if (pwd.value.length == 0) {
+                strength.innerHTML = 'Type Password';
+                return true;
+            } else if (false == enoughRegex.test(pwd.value)) {
+                strength.innerHTML = 'Your password must contain more characters!';
+                return true;
+            } else if (strongRegex.test(pwd.value)) {
+                strength.innerHTML = '<span style="color:#008000">Strong!</span>';
+                return false;
+            } else if (mediumRegex.test(pwd.value)) {
+                strength.innerHTML = '<span style="color:orange">Medium!</span>';
+                return true;
+            } else {
+                strength.innerHTML = '<span style="color:red">Weak!</span>';
+                return true;
+            }
+        }
+    </script>
+
+</body>
+</html>

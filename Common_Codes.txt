@@ -1,0 +1,12 @@
+Updated text file
+
+sdvsdbvsd
+Updating work Process-
+
+
+git checkout -b new_branch_name 
+git add . 
+git commit -m "Write what you changed in 1 line" 
+git push origin new_branch_name 
+ 
+Click “Compare & pull request”. This will take you to the “Open a pull request” page. From here, you should write a brief description of what you actually changed. And you should click the “Reviewers” tab and select whoever your team decided would be the “Merge Master”. When you’re done, click “Create pull request”.

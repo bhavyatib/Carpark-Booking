@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body, html {
+    height: 100%;
+    margin: 0;
+    background: #333333;
+    /*background-repeat: no-repeat;
+    background-attachment: fixed;*/
+    background-position: center;
+    background-size: 100%;
+}
+
+.registrationbox {
+    background: #E7E8E8;
+
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 60px;
+    margin-bottom: 2%;
+    transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+}
+
+.registrationbox h1 {
+    background: #000000;
+    padding: 20px 0;
+    font-size: 140%;
+    font-weight: 300;
+    text-align: center;
+    color: #FCF6F5FF;
+}
+
+.registrationbox .reg {
+    background: #E7E8E8;
+    padding: 6% 4%;
+    font-weight: bold;
+    font-size: 20px;
+}
+.registrationbox span,{
+    /*background: #E7E8E8;*/
+    padding: 6% 4%;
+    font-size: 12px;
+}
+div .registrationbox p{
+    width: 92%;
+    background: #E7E8E8;
+    margin-bottom: 4%;
+    border: 1px solid #ccc;
+    padding: 20%;
+    font-size: 95%;
+    color: #555;
+}
+
+.registrationbox input[type="firstName"],
+.registrationbox input[type="lastName"],
+.registrationbox input[type="username"],
+.registrationbox input[type="address"],
+.registrationbox input[type="emailId"],
+.registrationbox input[type="phoneNumber"],
+.registrationbox input[type="carRegistrationNumber"] {
+    width: 92%;
+    background: #E7E8E8;
+    margin-bottom: 4%;
+    border: 1px solid #ccc;
+    padding: 4%;
+    font-size: 95%;
+    color: #555;
+}
+.registrationbox .reg form tr td #password,
+.registrationbox .reg form tr td #confirmPassword {
+width: 92%;
+background: #E7E8E8;
+margin-bottom: 4%;
+border: 1px solid #ccc;
+font-size: 95%;
+color: #555;
+}
+
+.registrationbox input[type="carType"] {
+    width: 92%;
+    background: #E7E8E8;
+    margin-bottom: 4%;
+    border: 1px solid #ccc;
+    padding: 4%;
+    font-size: 95%;
+    color: #555;
+}
+.registrationbox input[type="submit"] {
+    width: 100%;
+    background: #000000;
+    border: 0;
+    padding: 4%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+    color: #fff;
+    cursor: pointer;
+    transition: background .3s;
+    -webkit-transition: background .3s;
+}
+
+
+.registrationbox input[type="submit"]:hover {
+    background: #333333;
+}
+
+.registrationbox input[type="reset"] {
+    width: 50%;
+    background: #590059;
+    border: 0;
+    padding: 4%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+    color: #fff;
+    cursor: pointer;
+    transition: background .3s;
+    -webkit-transition: background .3s;
+}
+
+.registrationbox input[type="reset"]:hover {
+    background: #990066;
+}
+
+.registrationbox .reg p {
+    font-size: 14px;
+    font-weight: lighter;
+}

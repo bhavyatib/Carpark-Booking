@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background-size: cover;
+    background-image: url(../../../static/background.jpg);
+    background-color: #333333;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+
+}
+h1{
+    text-align: center;
+}
+.feedback{
+    width: 100%;
+    max-width: 780px;
+    background: #FCF6F5FF;
+    margin: 0 auto;
+    padding: 15px;
+    box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.3);
+}
+.survey-hr{
+    margin:10px 0;
+    border: .5px solid #ddd;
+}
+.feedback form input,
+.feedback form textarea{
+    width: 100%;
+    border: 1px solid #ddd;
+}
+.choice {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 20px;
+    display: block;
+}
+span.scale-rating{
+    margin: 5px 0 15px;
+    display: inline-block;
+
+    width: 100%;
+
+}
+span.scale-rating>label {
+    position:relative;
+    -webkit-appearance: none;
+    outline:0 !important;
+    border: 1px solid grey;
+    height:33px;
+    margin: 0 5px 0 0;
+    width: calc(10% - 7px);
+    float: left;
+    cursor:pointer;
+}
+span.scale-rating label {
+    position:relative;
+    -webkit-appearance: none;
+    outline:0 !important;
+    height:33px;
+
+    margin: 0 5px 0 0;
+    width: calc(10% - 7px);
+    float: left;
+    cursor:pointer;
+}
+span.scale-rating input[type=radio] {
+    position:absolute;
+    -webkit-appearance: none;
+    opacity:0;
+    outline:0 !important;
+    /*border-right: 1px solid grey;*/
+    height:33px;
+
+    margin: 0 5px 0 0;
+
+    width: 100%;
+    float: left;
+    cursor:pointer;
+    z-index:3;
+}
+span.scale-rating label:hover{
+    background:#33DEFF;
+
+}
+span.scale-rating input[type=radio]:last-child{
+    border-right:0;
+}
+span.scale-rating label input[type=radio]:checked ~ label{
+    /*-webkit-appearance: none;*/
+    margin: 0;
+    background:#33DEFF;
+    color: #FCF6F5FF;
+}
+span.scale-rating label:before
+{
+    content:attr(value);
+    top: 7px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    vertical-align: middle;
+    z-index:2;
+}
+
+.submitbutton{
+    /*style="background:#43a7d5;color:#fff;padding:12px;border:0"*/
+    color: #fff;
+    background: #333333;
+    align-items: center;
+    margin: 5px;
+    padding: 4px 12px;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.submitbutton:hover{
+    background:  #191919;
+}

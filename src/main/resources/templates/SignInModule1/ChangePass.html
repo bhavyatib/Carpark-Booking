@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+        <title>Change password </title>
+    <link rel="stylesheet" href="../../../static/style_signUp.css">
+    <link rel="stylesheet" th:href="@{/style_signUp.css}">
+
+</head>
+<body>
+<div class="registrationbox">
+    <h1>Change Password</h1>
+    <div class="reg>
+        <form action="#"  th:action="@{/changepwd}" th:object="${user}" method="post">
+            <td> Here are a few guidelines for your password </td><br>
+            <td> Your password should have: </td><br>
+            <td> 1. A minimum of 8 characters </td><br>
+            <td> 2. At least 1 uppercase letter </td><br>
+            <td> 3. At least 1 symbol </td><br>
+            <td> 4. At least 1 number </td><br><br>
+
+            <label> Enter new Password</label>
+
+            <input  th:field="*{password}" name="password" id="password" type="password" size="15" maxlength="100" onkeyup="return passwordChanged();" />
+            <br><span id="strength"></span><br>
+            <tr>
+                <td>
+                    <input name="submit" type="submit" value="Submit" />
+                </td>
+            </tr>
+            <!--<input type="submit" value="Submit" id="submit"></input>-->
+        </form>
+
+    </div>
+</div>
+</body>
+<script  language="javascript">
+    function passwordChanged() {
+        const button=document.getElementById('submit');
+        var strength = document.getElementById('strength');
+        var strongRegex = new RegExp("^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
+        var mediumRegex = new RegExp("^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$", "g");
+        var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+        var pwd = document.getElementById("password");
+        if (pwd.value.length == 0) {
+            strength.innerHTML = 'Type Password';
+        } else if (false == enoughRegex.test(pwd.value)) {
+            strength.innerHTML = 'Your password must contain more characters!';
+            button.disabled=true;
+        } else if (strongRegex.test(pwd.value)) {
+            strength.innerHTML = '<span style="color:#008000">Strong!</span>';
+            button.disabled=false;
+        } else if (mediumRegex.test(pwd.value)) {
+            strength.innerHTML = '<span style="color:orange">Medium!</span>';
+            button.disabled=true;
+        } else {
+            strength.innerHTML = '<span style="color:red">Weak!</span>';
+            button.disabled=true;
+        }
+    }
+</script>
+</html>

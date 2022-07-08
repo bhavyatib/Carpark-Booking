@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback form</title>
+    <link rel="stylesheet" href="../../../static/style_feedbackForm.css">
+    <link rel="stylesheet" th:href="@{/style_feedbackForm.css}">
+
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="feedback">
+    <h1>Feedback</h1>
+    <br>
+    <p>Thank you for booking Slot. We would like to know to know your feedback. Please spare some moments to give us your valuable feedback as it will help us in improving our service.</p>
+    <br>
+    <h4>Please rate your service experience for the following parameters</h4>
+    <form method="post" action="#action-url">
+        <hr class="survey-hr">
+        <label>1. Your experience with the Workers</label>
+        <div style="color:grey">
+    <span style="float:left">
+     POOR
+    </span>
+            <span style="float:right">
+      BEST
+    </span>
+
+        </div>
+        <span class="scale-rating">
+  <label value="1">
+  <input type="radio" name="rating" >
+  <label style="width:100%;"></label>
+  </label>
+  <label value="2">
+  <input type="radio" name="rating" >
+  <label style="width:100%;"></label>
+  </label>
+  <label value="3">
+  <input type="radio" name="rating">
+  <label style="width:100%;"></label>
+  </label>
+  <label value="4">
+  <input type="radio" name="rating">
+  <label style="width:100%;"></label>
+  </label>
+  <label value="5">
+  <input type="radio" name="rating">
+  <label style="width:100%;"></label>
+  </label>
+  <label value="6">
+  <input type="radio" name="rating">
+  <label style="width:100%;"></label>
+  </label>
+  <label value="7">
+  <input type="radio" name="rating">
+  <label style="width:100%;"></label>
+  </label>
+  <label value="8">
+  <input type="radio" name="rating">
+  <label style="width:100%;"></label>
+  </label>
+  <label value="9">
+  <input type="radio" name="rating">
+  <label style="width:100%;"></label>
+  </label>
+  <label value="10">
+  <input type="radio" name="rating" value="10">
+  <label style="width:100%;"></label>
+  </label>
+</span>
+
+        <div class="clear"></div>
+        <hr class="survey-hr">
+        <label for="feedback">2. Any Other Feedback:</label><br/><br/>
+        <textarea cols="75" name="commentText" rows="5" style="100%"  ></textarea><br>
+        <br>
+        <div class="clear"></div>
+        <input class="submitbutton"  type="submit" value="Submit your Feedback">
+    </form>
+</div>
+
+</body>
+</html>

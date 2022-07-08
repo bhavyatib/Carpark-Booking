@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title> Wallet User Dashboard</title>
+    <!--<link rel="stylesheet" href="../../../static/style_user.css">-->
+    <link rel="stylesheet" th:href="@{/style_user.css}" href="../../../static/style_user.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo-details">
+        <i class='bx bxl-c-plus-plus'></i>
+        <span class="logo_name">Parking App</span>
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a th:href="@{/Dashboard/c/}" >
+                <i class='bx bx-grid-alt' ></i>
+                <span class="links_name">Home</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/c/BookingSlot}">
+                <i class='bx bx-box' ></i>
+                <span class="links_name">Booking Slot</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/c/AllBookings}">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name">All Bookings</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/c/Wallet}" class="active">
+                <i class='bx bx-pie-chart-alt-2' ></i>
+                <span class="links_name">Wallet</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/c/Setting}">
+                <i class='bx bx-cog' ></i>
+                <span class="links_name">Setting</span>
+            </a>
+        </li>
+        <li class="log_out">
+            <a th:href="@{/}">
+                <i class='bx bx-log-out'></i>
+                <span class="links_name">Log out</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">User Dashboard</span>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <i class='bx bx-search' ></i>
+        </div>
+        <div class="profile-details">
+            <!--<img src="images/profile.jpg" alt="">-->
+            <span class="admin_name">Name</span>
+            <i class='bx bx-chevron-down' ></i>
+        </div>
+    </nav>
+
+    <div class="home-content">
+        <div class="overview-boxes">
+            <div class="box">
+                <div class="right-side" >
+                    <div class="box-topic">Total Amount</div>
+                    <div class="number"><a th:text = "${wallet}"/></div>
+                    <div class="indicator">
+                        <i class='bx bx-up-arrow-alt'></i>
+                        <span class="text">Total Amount in the wallet</span>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="registrationbox">
+                        <!-- <img src="https://previews.123rf.com/images/asmati/asmati1610/asmati161000233/63831576-user-sign-illustration-white-icon-on-red-circle-.jpg" class="avatar" >-->
+                        <form name='registration' th:action="@{/Dashboard/c/Wallet/Add}" th:object = "${currentUser}" method='POST'>
+                            <div class="addMoney">
+                                <td>Amount to be added:</td><br><input type="text" th:field = "*{wallet}" placeholder="XX">
+                                <i class='bx bx-search' ></i>
+                            </div>
+                    <br>
+                    <br>
+                        <div class="buttons">
+
+                            <div class="button">
+                                <td>
+                                    <input name="submit" type="submit" value="Add Money" />
+                                </td>
+                                <td th:text="${message}"></td>
+                            </div>
+                        </div>
+
+                <!--<i class='bx bx-cart-alt cart'></i>-->
+            </div>
+
+        </div>
+
+
+
+                <script>
+                    let sidebar = document.querySelector(".sidebar");
+                    let sidebarBtn = document.querySelector(".sidebarBtn");
+                    sidebarBtn.onclick = function() {
+                        sidebar.classList.toggle("active");
+                        if(sidebar.classList.contains("active")){
+                            sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+                        }else
+                            sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+                    }
+                </script>
+
+</body>
+</html>
+

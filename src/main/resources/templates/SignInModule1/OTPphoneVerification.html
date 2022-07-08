@@ -1,0 +1,152 @@
+    <!DOCTYPE html>
+<html lang="en" >
+<head>
+    <title>Phone Verification</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../static/style_phoneVerification.css">
+    <link rel="stylesheet" th:href="@{/style_phoneVerification.css}">
+
+<body>
+<div class="box">
+<h1>Congratulations!</h1>
+<p> Your email has been verified!</p>
+<p>There are just a few more steps to complete the process</p>
+<div>
+
+    <form th:action="@{/PhoneVerification}" th:object="${carOwner}" method="post">
+
+        <table id="mobreg">
+            <td>
+                <centre>
+                    <p>Enter Mobile number </p>
+                    <label for="phoneNumber">Phone Number</label><br>
+                    <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="phoneNumber">
+                    <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+                    <br>
+                    <div class ="recaptcha" id="recaptcha-container"></div>
+                    <button type="button" onclick="phoneAuth()">send code</button>
+
+                    <br>
+                    <p>Enter verification code</p>
+                    <input type="text" id="verificationCode" placeholder="Enter verification code">
+                    <button type="button" onclick="codeverify()">Verify code</button>
+
+                </centre>
+            </td>
+        </table>
+        </form>
+
+    </div>
+</div>
+</body>
+
+<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+
+<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+<script src="/__/firebase/9.5.0/firebase-app-compat.js"></script>
+<script src="/__/firebase/9.5.0/firebase-auth-compat.js"></script>
+<script src="/__/firebase/init.js"></script>
+<script>
+
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "firebase/app";
+    import { getAnalytics } from "firebase/analytics";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyCKEsdsaTf_izIIlUjFcKtsFOiFT8lgje8",
+        authDomain: "oop-project-47.firebaseapp.com",
+        databaseURL: "https://oop-project-47-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "oop-project-47",
+        storageBucket: "oop-project-47.appspot.com",
+        messagingSenderId: "81920376088",
+        appId: "1:81920376088:web:007b6dba17e809cfa8f26d",
+        measurementId: "G-4JYQNVZ671"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+
+
+    // // Your web app's Firebase configuration
+    // // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    // var firebaseConfig = {
+    //     apiKey: "AIzaSyBkqqtF50rZoS3p_q1KVN-Wwn9EtiN0lJg",
+    //     authDomain: "phone-verification-1a23c.firebaseapp.com",
+    //     databaseURL: "https://phone-verification-1a23c.firebaseio.com",
+    //     projectId: "phone-verification-1a23c",
+    //     storageBucket: "phone-verification-1a23c.appspot.com",
+    //     messagingSenderId: "391215206940",
+    //     appId: "1:391215206940:web:985714206a336e68d645d9",
+    //     measurementId: "G-CQDX4K1R90"
+    // };
+    // // Initialize Firebase
+    // firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+</script>
+
+
+<script>
+    // To apply the default browser preference instead of explicitly setting it.
+    // firebase.auth().useDeviceLanguage();
+    window.onload=function(){
+        render();
+    };
+    function render(){
+        window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+        recaptchaVerifier.render();
+    }
+</script>
+<script>
+    function phoneAuth() {
+        //get the number
+        const number = document.getElementById('phoneNumber').value;
+        firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier).then(function (confirmationResult) {
+            window.confirmationResult = confirmationResult;
+            coderesult = confirmationResult;
+            console.log(coderesult);
+            alert("Message sent");
+
+        }).catch(function (error) {
+            alert(error.message)
+        });
+    }
+</script>
+<script>
+    function codeverify(){
+        var code=document.getElementById('verificationCode').value;
+        coderesult.confirm(code).then(function(result){
+
+            var user = result.user;
+            console.log(user);
+            location.replace("http://localhost:8080/success")
+            alert("Successfully registered");
+        }).catch(function(error){
+            alert(error.message);
+        });
+    }
+
+</script>
+
+    </html>

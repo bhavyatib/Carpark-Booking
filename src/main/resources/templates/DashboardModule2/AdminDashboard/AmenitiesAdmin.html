@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Amenities Admin</title>
+    <link rel="stylesheet" th:href="@{/style_admin.css}" href="../../../static/style_admin.css">
+    <!--<link rel="stylesheet" href="../../../static/style_admin.css">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo-details">
+        <i class='bx bxl-c-plus-plus'></i>
+        <span class="logo_name">Parking App</span>
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a th:href="@{/Dashboard/a/}" >
+                <i class='bx bx-grid-alt' ></i>
+                <span class="links_name">Home</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/a/Bookings}" >
+                <i class='bx bx-box' ></i>
+                <span class="links_name">Bookings</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/a/ParkingSpace}" >
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name">Parking Spaces</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/a/Amenities}" class="active">
+                <i class='bx bx-pie-chart-alt-2' ></i>
+                <span class="links_name">Amenities</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/a/Report}" >
+                <i class='bx bx-coin-stack' ></i>
+                <span class="links_name">Report</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/a/AllUsers}" >
+                <i class='bx bx-book-alt' ></i>
+                <span class="links_name">All Users</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/Dashboard/a/Settings}" >
+                <i class='bx bx-cog' ></i>
+                <span class="links_name">Setting</span>
+            </a>
+        </li>
+        <li class="log_out">
+            <a th:href="@{/}">
+                <i class='bx bx-log-out'></i>
+                <span class="links_name">Log out</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Admin Dashboard</span>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <i class='bx bx-search' ></i>
+        </div>
+        <div class="profile-details">
+            <!--<img src="images/profile.jpg" alt="">-->
+            <span class="admin_name">Admin name</span>
+            <i class='bx bx-chevron-down' ></i>
+        </div>
+    </nav>
+
+    <div class="home-content">
+        <div class="overview-boxes">
+
+        </div>
+
+        <div class="sales-boxes">
+            <div class="recent-sales box">
+                <div class="title">Amenities</div>
+                <div class="sales-details">
+                    <ul class="details">
+                        <li class="topic">Select</li>
+                        <!--<input type="radio" name="group1" id="radio1" checked="checked"  />
+                        <td id="wrapper"><label for="radio1"></label><label><input type="radio" name="group1" id="radio2" ><a href="#"></a></label></td>-->
+                        <li><input type="radio"><a href="#"></a></li>
+                        <li><input type="radio"><a href="#"></a></li>
+                        <li><input type="radio"><a href="#"></a></li>
+                        <li><input type="radio"><a href="#"></a></li>
+                    </ul>
+
+                    <ul class="details">
+                        <li class="topic">Serial No.</li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+
+                    </ul>
+                    <ul class="details">
+                        <li class="topic">Amenities</li>
+                        <li><a href="#">Car Wash</a></li>
+                        <li><a href="#">Wheel Alignment</a></li>
+                        <li><a href="#">Dry cleaning</a></li>
+                        <li><a href="#">Engine oil</a></li>
+                    </ul>
+                    <ul class="details">
+                        <li class="topic">No. of worker</li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                    </ul>
+                    <ul class="details">
+                        <li class="topic">Description</li>
+                        <li><a href="#">abc</a></li>
+                        <li><a href="#">abc</a></li>
+                        <li><a href="#">abc</a></li>
+                        <li><a href="#">abc</a></li>
+                        <li><a href="#">abc</a></li>
+                    </ul>
+
+                </div>
+                <div class="buttons">
+
+                    <div class="button">
+                        <a href="#">Edit</a>
+                    </div>
+                    <!-- Trigger/Open the Modal -->
+                    <div class="button">
+                        <button id="myBtn">Delete</button>
+
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <p>Are you sure you want to delete it?</p>
+                                <button>Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="#">Add</a>
+                    </div>
+                </div>
+
+                <script>
+                    let sidebar = document.querySelector(".sidebar");
+                    let sidebarBtn = document.querySelector(".sidebarBtn");
+                    sidebarBtn.onclick = function() {
+                        sidebar.classList.toggle("active");
+                        if(sidebar.classList.contains("active")){
+                            sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+                        }else
+                            sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+                    }
+                    // Get the modal
+                    var modal = document.getElementById("myModal");
+
+                    // Get the button that opens the modal
+                    var btn = document.getElementById("myBtn");
+
+                    // Get the <span> element that closes the modal
+                    var span = document.getElementsByClassName("close")[0];
+
+                    // When the user clicks on the button, open the modal
+                    btn.onclick = function() {
+                        modal.style.display = "block";
+                    }
+
+                    // When the user clicks on <span> (x), close the modal
+                    span.onclick = function() {
+                        modal.style.display = "none";
+                    }
+
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                </script>
+
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+
+</html>

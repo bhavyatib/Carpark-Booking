@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Forget Password</title>
+    <link rel="stylesheet" th:href="@{/style_ForgetPass.css}">
+    <link rel="stylesheet" href="../../../static/style_ForgetPass.css">
+</head>
+<body>
+<div id="forgot">
+    <h1>Forgot Password</h1>
+
+    <div class="forgot-container">
+
+        <form th:action="@{/pass_change}" th:object="${carOwner}" method="post">
+
+            <label >Email</label>
+            <input th:field="*{emailId}" type="text" name="emailId">
+
+            <input type="reset" value="Clear"/><br><br>
+            <input type="submit" value="Submit">
+
+        </form>
+
+        <!--
+                <form th:action="@{/pass_change}" method="post">
+                    <div><label> User Name : <input th:field="*{email}" type="text" name="emailId"> </label></div>
+                    <div><input type="submit" value="Submit"/></div>
+        =======
+
+                <form action="#" th:action="@{/forgot}" th:object="${user}" method="post">
+
+                    <label >Email</label>
+                    <input th:field="*{email}" type="text" name="emailId"></input>
+
+                    <input type="reset" value="Clear"/></><br><br>
+                    <input type="submit" value="Submit"></input>
+
+        >>>>>>> 0c209e3a05b0a279827985531bd729803c76df93
+                </form>
+            </div>
+        </div>
+
+        </form> -->
+    </div>
+</div>
+
+        </body>
+
+        </html>
